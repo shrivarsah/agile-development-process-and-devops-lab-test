@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Notification System Dashboard</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Theme Config -->
+  <script id="tailwind-config">
+      tailwind.config = {
+          darkMode: "class",
+          theme: {
+              extend: {
+                  colors: {
+                      "primary": "#137fec",
+                      "background-light": "#f6f7f8",
+                      "background-dark": "#101922",
+                      "card-dark": "#16202a",
+                      "border-dark": "#232d38",
+                  },
+                  fontFamily: {
+                      "display": ["Inter", "sans-serif"]
+                  },
+                  borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+              },
+          },
+      }
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased selection:bg-primary/30">
+<div class="flex h-screen w-full overflow-hidden">
+  <!-- Side Navigation -->
+  <aside class="hidden w-64 flex-col border-r border-gray-200 dark:border-border-dark bg-white dark:bg-background-dark md:flex">
+    <div class="flex h-full flex-col justify-between p-4">
+      <div class="flex flex-col gap-6">
+        <!-- Brand -->
+        <div class="flex gap-3 items-center px-2">
+          <div class="bg-primary/20 flex h-10 w-10 items-center justify-center rounded-lg text-primary">
+            <span class="material-symbols-outlined">hub</span>
+          </div>
+          <div class="flex flex-col">
+            <h1 class="text-base font-bold leading-none dark:text-white">NotifyAdmin</h1>
+            <p class="text-xs font-normal text-slate-500 dark:text-slate-400">Ops Platform</p>
+          </div>
+        </div>
+        <!-- Menu -->
+        <nav class="flex flex-col gap-1">
+          <a class="flex items-center gap-3 rounded-lg bg-primary/10 px-3 py-2 text-primary" href="#">
+            <span class="material-symbols-outlined fill-1">dashboard</span>
+            <span class="text-sm font-medium">Dashboard</span>
+          </a>
+          <a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white rounded-lg transition-colors" href="#">
+            <span class="material-symbols-outlined">description</span>
+            <span class="text-sm font-medium">Logs</span>
+          </a>
+          <a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white rounded-lg transition-colors" href="#">
+            <span class="material-symbols-outlined">content_copy</span>
+            <span class="text-sm font-medium">Templates</span>
+          </a>
+          <a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white rounded-lg transition-colors" href="#">
+            <span class="material-symbols-outlined">settings</span>
+            <span class="text-sm font-medium">Settings</span>
+          </a>
+          <a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white rounded-lg transition-colors" href="#">
+            <span class="material-symbols-outlined">vpn_key</span>
+            <span class="text-sm font-medium">API Access</span>
+          </a>
+        </nav>
+      </div>
+      <!-- Bottom User -->
+      <div class="flex items-center gap-3 rounded-lg border border-gray-200 p-3 dark:border-border-dark bg-gray-50 dark:bg-card-dark">
+        <div class="h-8 w-8 rounded-full bg-cover bg-center" data-alt="User profile picture placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCnV7dHqDzRzJKJoK9F38LPFIqssUTZKvkjx2wVIJLA17cSnmLlW4MvrFrATraQ5D3C_jBjnNhZOMed6oHS0he2hgZZem4Hwi7a_UGJWfPjAAbJWwvDhUbiHzaDlR5iYcfGWh2wdVakg3Igg9ApexoUf8626l57E3kGgYOBLYf1Nyo4Nl4AbrUuUjYKPctdYZoctafLBRGR2zWl96JbJ2YBGvwo50903dMG1PMqmj028WKRzhzrRbKFrHkTxyxPR_DGMhKuageKGg");'></div>
+        <div class="flex flex-col overflow-hidden">
+          <p class="truncate text-sm font-medium dark:text-white">Alex Morgan</p>
+          <p class="truncate text-xs text-slate-500 dark:text-slate-400">alex@company.com</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <!-- Main Content -->
+  <main class="flex flex-1 flex-col overflow-hidden bg-background-light dark:bg-background-dark relative">
+    <!-- Top Navigation -->
+    <header class="flex h-16 items-center justify-between border-b border-gray-200 dark:border-border-dark px-6 bg-white/50 dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-20">
+      <div class="flex items-center gap-4">
+        <button class="md:hidden text-slate-500">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <h2 class="text-lg font-bold leading-tight tracking-tight dark:text-white">System Overview</h2>
+      </div>
+      <div class="flex items-center gap-4">
+        <!-- Search -->
+        <div class="hidden sm:flex items-center rounded-lg bg-gray-100 dark:bg-card-dark border border-transparent focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/50 transition-all">
+          <div class="flex h-full items-center pl-3 text-slate-400">
+            <span class="material-symbols-outlined text-[20px]">search</span>
+          </div>
+          <input class="h-9 w-64 border-none bg-transparent px-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-0 dark:text-white" placeholder="Search logs by ID..." type="text"/>
+        </div>
+        <!-- Actions -->
+        <div class="flex gap-2">
+          <button class="flex h-9 w-9 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-slate-500 dark:text-slate-300 relative transition-colors">
+            <span class="material-symbols-outlined text-[20px]">notifications</span>
+            <span class="absolute top-2 right-2 h-2 w-2 rounded-full bg-red-500 border border-white dark:border-background-dark"></span>
+          </button>
+          <button class="flex h-9 w-9 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-slate-500 dark:text-slate-300 transition-colors">
+            <span class="material-symbols-outlined text-[20px]">help</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- Scrollable Content Area -->
+    <div class="flex-1 overflow-y-auto p-6 md:p-8 space-y-8">
+      <!-- Page Header & Actions -->
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div class="flex flex-col gap-2">
+          <h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Dashboard</h1>
+          <p class="text-slate-500 dark:text-slate-400 text-sm max-w-2xl">Real-time system performance, delivery metrics, and operational health status.</p>
+        </div>
+        <div class="flex items-center gap-3">
+<span class="flex items-center gap-2 text-xs font-medium text-emerald-500 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+                            System Operational
+                        </span>
+          <button class="flex h-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-white shadow-sm hover:bg-primary/90 transition-colors">
+            <span class="material-symbols-outlined text-[18px]">download</span>
+            <span>Export Report</span>
+          </button>
+        </div>
+      </div>
+      <!-- Filters Ribbon -->
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="relative group">
+          <button class="flex h-9 items-center gap-2 rounded-lg border border-gray-200 bg-white px-3 text-sm font-medium text-slate-700 shadow-sm hover:bg-gray-50 dark:border-border-dark dark:bg-card-dark dark:text-slate-200 dark:hover:bg-white/5">
+            <span class="text-slate-400 material-symbols-outlined text-[18px]">dns</span>
+            <span>Env: Production</span>
+            <span class="text-slate-400 material-symbols-outlined text-[18px]">expand_more</span>
+          </button>
+        </div>
+        <div class="relative group">
+          <button class="flex h-9 items-center gap-2 rounded-lg border border-gray-200 bg-white px-3 text-sm font-medium text-slate-700 shadow-sm hover:bg-gray-50 dark:border-border-dark dark:bg-card-dark dark:text-slate-200 dark:hover:bg-white/5">
+            <span class="text-slate-400 material-symbols-outlined text-[18px]">calendar_today</span>
+            <span>Date: Last 24 Hours</span>
+            <span class="text-slate-400 material-symbols-outlined text-[18px]">expand_more</span>
+          </button>
+        </div>
+        <div class="relative group">
+          <button class="flex h-9 items-center gap-2 rounded-lg border border-gray-200 bg-white px-3 text-sm font-medium text-slate-700 shadow-sm hover:bg-gray-50 dark:border-border-dark dark:bg-card-dark dark:text-slate-200 dark:hover:bg-white/5">
+            <span class="text-slate-400 material-symbols-outlined text-[18px]">filter_alt</span>
+            <span>Channel: All</span>
+            <span class="text-slate-400 material-symbols-outlined text-[18px]">expand_more</span>
+          </button>
+        </div>
+        <div class="relative group">
+          <button class="flex h-9 items-center gap-2 rounded-lg border border-gray-200 bg-white px-3 text-sm font-medium text-slate-700 shadow-sm hover:bg-gray-50 dark:border-border-dark dark:bg-card-dark dark:text-slate-200 dark:hover:bg-white/5">
+            <span class="text-slate-400 material-symbols-outlined text-[18px]">check_circle</span>
+            <span>Status: All</span>
+            <span class="text-slate-400 material-symbols-outlined text-[18px]">expand_more</span>
+          </button>
+        </div>
+        <div class="ml-auto flex items-center gap-2">
+          <button class="p-2 text-slate-400 hover:text-primary transition-colors" title="Refresh Data">
+            <span class="material-symbols-outlined text-[20px] animate-spin-slow">refresh</span>
+          </button>
+        </div>
+      </div>
+      <!-- KPI Cards -->
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Card 1 -->
+        <div class="flex flex-col gap-1 rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-border-dark dark:bg-card-dark">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Notifications</p>
+            <span class="material-symbols-outlined text-slate-300 dark:text-slate-600">mail</span>
+          </div>
+          <div class="flex items-baseline gap-2 mt-2">
+            <p class="text-3xl font-bold text-slate-900 dark:text-white">1.2M</p>
+            <span class="flex items-center text-sm font-medium text-emerald-500">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+                                5.2%
+                            </span>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="flex flex-col gap-1 rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-border-dark dark:bg-card-dark">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Success Rate</p>
+            <span class="material-symbols-outlined text-slate-300 dark:text-slate-600">check_circle</span>
+          </div>
+          <div class="flex items-baseline gap-2 mt-2">
+            <p class="text-3xl font-bold text-slate-900 dark:text-white">99.8%</p>
+            <span class="flex items-center text-sm font-medium text-emerald-500">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+                                0.1%
+                            </span>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="flex flex-col gap-1 rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-border-dark dark:bg-card-dark">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Failure Rate</p>
+            <span class="material-symbols-outlined text-slate-300 dark:text-slate-600">warning</span>
+          </div>
+          <div class="flex items-baseline gap-2 mt-2">
+            <p class="text-3xl font-bold text-slate-900 dark:text-white">0.2%</p>
+            <span class="flex items-center text-sm font-medium text-emerald-500">
+<span class="material-symbols-outlined text-[16px] rotate-180">arrow_upward</span>
+                                0.1%
+                            </span>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="flex flex-col gap-1 rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-border-dark dark:bg-card-dark">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Avg Latency</p>
+            <span class="material-symbols-outlined text-slate-300 dark:text-slate-600">timer</span>
+          </div>
+          <div class="flex items-baseline gap-2 mt-2">
+            <p class="text-3xl font-bold text-slate-900 dark:text-white">240ms</p>
+            <span class="flex items-center text-sm font-medium text-emerald-500">
+<span class="material-symbols-outlined text-[16px] rotate-180">arrow_upward</span>
+                                12ms
+                            </span>
+          </div>
+        </div>
+      </div>
+      <!-- Charts Section -->
+      <div class="grid gap-6 lg:grid-cols-3">
+        <!-- Main Chart (2/3 width) -->
+        <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-border-dark dark:bg-card-dark lg:col-span-2">
+          <div class="mb-6 flex items-center justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Throughput Volume</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Notifications sent per hour (Last 24h)</p>
+            </div>
+            <div class="flex gap-2">
+<span class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+<span class="h-2 w-2 rounded-full bg-primary"></span> Email
+                                </span>
+              <span class="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+<span class="h-2 w-2 rounded-full bg-indigo-400"></span> SMS
+                                </span>
+            </div>
+          </div>
+          <!-- Mock Bar Chart Visualization -->
+          <div class="flex h-64 items-end justify-between gap-1 sm:gap-2">
+            <!-- Bars are purely decorative for mockup -->
+            <div class="w-full bg-primary/20 hover:bg-primary/30 rounded-t-sm relative group cursor-pointer" style="height: 40%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">12k</div></div>
+            <div class="w-full bg-primary/30 hover:bg-primary/40 rounded-t-sm relative group cursor-pointer" style="height: 55%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">15k</div></div>
+            <div class="w-full bg-primary/60 hover:bg-primary/70 rounded-t-sm relative group cursor-pointer" style="height: 70%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">21k</div></div>
+            <div class="w-full bg-primary hover:bg-primary-600 rounded-t-sm relative group cursor-pointer" style="height: 85%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">28k</div></div>
+            <div class="w-full bg-primary/80 hover:bg-primary/90 rounded-t-sm relative group cursor-pointer" style="height: 60%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">19k</div></div>
+            <div class="w-full bg-primary/40 hover:bg-primary/50 rounded-t-sm relative group cursor-pointer" style="height: 45%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">14k</div></div>
+            <div class="w-full bg-primary/20 hover:bg-primary/30 rounded-t-sm relative group cursor-pointer" style="height: 30%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">9k</div></div>
+            <div class="w-full bg-primary/30 hover:bg-primary/40 rounded-t-sm relative group cursor-pointer" style="height: 40%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">12k</div></div>
+            <div class="w-full bg-primary/70 hover:bg-primary/80 rounded-t-sm relative group cursor-pointer" style="height: 75%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">24k</div></div>
+            <div class="w-full bg-primary hover:bg-primary-600 rounded-t-sm relative group cursor-pointer" style="height: 90%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">31k</div></div>
+            <div class="w-full bg-primary/90 hover:bg-primary rounded-t-sm relative group cursor-pointer" style="height: 65%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">20k</div></div>
+            <div class="w-full bg-primary/50 hover:bg-primary/60 rounded-t-sm relative group cursor-pointer" style="height: 50%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">16k</div></div>
+            <div class="w-full bg-primary/30 hover:bg-primary/40 rounded-t-sm relative group cursor-pointer" style="height: 35%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">11k</div></div>
+            <div class="w-full bg-primary/20 hover:bg-primary/30 rounded-t-sm relative group cursor-pointer" style="height: 25%"><div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs py-1 px-2 rounded">8k</div></div>
+          </div>
+          <div class="mt-2 flex justify-between text-xs text-slate-400">
+            <span>00:00</span>
+            <span>04:00</span>
+            <span>08:00</span>
+            <span>12:00</span>
+            <span>16:00</span>
+            <span>20:00</span>
+            <span>23:59</span>
+          </div>
+        </div>
+        <!-- Side Chart (1/3 width) -->
+        <div class="flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-border-dark dark:bg-card-dark">
+          <h3 class="mb-6 text-lg font-bold text-slate-900 dark:text-white">Channel Distribution</h3>
+          <div class="flex flex-1 flex-col items-center justify-center gap-8">
+            <!-- Mock Donut Chart -->
+            <div class="relative h-48 w-48 rounded-full" style="background: conic-gradient(#137fec 0% 65%, #6366f1 65% 85%, #8b5cf6 85% 100%);">
+              <div class="absolute inset-4 rounded-full bg-white dark:bg-card-dark flex items-center justify-center flex-col">
+                <span class="text-3xl font-bold dark:text-white">1.2M</span>
+                <span class="text-xs text-slate-500">Total Sent</span>
+              </div>
+            </div>
+            <!-- Legend -->
+            <div class="grid w-full grid-cols-2 gap-4">
+              <div class="flex items-center gap-2">
+                <span class="h-3 w-3 rounded-full bg-primary"></span>
+                <div class="flex flex-col">
+                  <span class="text-xs text-slate-500 dark:text-slate-400">Email</span>
+                  <span class="text-sm font-bold dark:text-white">65%</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="h-3 w-3 rounded-full bg-indigo-500"></span>
+                <div class="flex flex-col">
+                  <span class="text-xs text-slate-500 dark:text-slate-400">Push</span>
+                  <span class="text-sm font-bold dark:text-white">20%</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="h-3 w-3 rounded-full bg-violet-500"></span>
+                <div class="flex flex-col">
+                  <span class="text-xs text-slate-500 dark:text-slate-400">SMS</span>
+                  <span class="text-sm font-bold dark:text-white">15%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Recent Activity Table -->
+      <div class="rounded-xl border border-gray-200 bg-white shadow-sm dark:border-border-dark dark:bg-card-dark overflow-hidden">
+        <div class="border-b border-gray-200 p-4 dark:border-border-dark flex justify-between items-center">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Live Logs</h3>
+          <button class="text-sm text-primary hover:text-primary/80 font-medium">View All Logs</button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-gray-50 text-xs uppercase text-slate-500 dark:bg-white/5 dark:text-slate-400">
+            <tr>
+              <th class="px-6 py-3 font-medium">Timestamp</th>
+              <th class="px-6 py-3 font-medium">Notification ID</th>
+              <th class="px-6 py-3 font-medium">Channel</th>
+              <th class="px-6 py-3 font-medium">Recipient</th>
+              <th class="px-6 py-3 font-medium">Status</th>
+              <th class="px-6 py-3 font-medium">Latency</th>
+            </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-border-dark">
+            <tr class="group hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+              <td class="whitespace-nowrap px-6 py-4 text-slate-500 dark:text-slate-400">Oct 24, 10:42:05</td>
+              <td class="whitespace-nowrap px-6 py-4 font-mono text-xs text-slate-500 dark:text-slate-400">#NOT-9821-X34</td>
+              <td class="whitespace-nowrap px-6 py-4">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[16px] text-slate-400">mail</span>
+                  <span class="dark:text-white">Email</span>
+                </div>
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 dark:text-white">user_821@example.com</td>
+              <td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-500 ring-1 ring-inset ring-emerald-500/20">
+                                            Sent
+                                        </span>
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 text-slate-500 dark:text-slate-400">142ms</td>
+            </tr>
+            <tr class="group hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+              <td class="whitespace-nowrap px-6 py-4 text-slate-500 dark:text-slate-400">Oct 24, 10:41:58</td>
+              <td class="whitespace-nowrap px-6 py-4 font-mono text-xs text-slate-500 dark:text-slate-400">#NOT-9821-X33</td>
+              <td class="whitespace-nowrap px-6 py-4">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[16px] text-slate-400">smartphone</span>
+                  <span class="dark:text-white">Push</span>
+                </div>
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 dark:text-white">Device: iPhone 14</td>
+              <td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-500 ring-1 ring-inset ring-emerald-500/20">
+                                            Sent
+                                        </span>
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 text-slate-500 dark:text-slate-400">89ms</td>
+            </tr>
+            <tr class="group hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+              <td class="whitespace-nowrap px-6 py-4 text-slate-500 dark:text-slate-400">Oct 24, 10:41:22</td>
+              <td class="whitespace-nowrap px-6 py-4 font-mono text-xs text-slate-500 dark:text-slate-400">#NOT-9821-X32</td>
+              <td class="whitespace-nowrap px-6 py-4">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[16px] text-slate-400">sms</span>
+                  <span class="dark:text-white">SMS</span>
+                </div>
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 dark:text-white">+1 (555) 091-2342</td>
+              <td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-red-500/10 px-2.5 py-0.5 text-xs font-medium text-red-500 ring-1 ring-inset ring-red-500/20">
+                                            Failed
+                                        </span>
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 text-slate-500 dark:text-slate-400">450ms</td>
+            </tr>
+            <tr class="group hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+              <td class="whitespace-nowrap px-6 py-4 text-slate-500 dark:text-slate-400">Oct 24, 10:40:15</td>
+              <td class="whitespace-nowrap px-6 py-4 font-mono text-xs text-slate-500 dark:text-slate-400">#NOT-9821-X31</td>
+              <td class="whitespace-nowrap px-6 py-4">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[16px] text-slate-400">mail</span>
+                  <span class="dark:text-white">Email</span>
+                </div>
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 dark:text-white">billing@client.com</td>
+              <td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-amber-500/10 px-2.5 py-0.5 text-xs font-medium text-amber-500 ring-1 ring-inset ring-amber-500/20">
+                                            Pending
+                                        </span>
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 text-slate-500 dark:text-slate-400">-</td>
+            </tr>
+            <tr class="group hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+              <td class="whitespace-nowrap px-6 py-4 text-slate-500 dark:text-slate-400">Oct 24, 10:39:55</td>
+              <td class="whitespace-nowrap px-6 py-4 font-mono text-xs text-slate-500 dark:text-slate-400">#NOT-9821-X30</td>
+              <td class="whitespace-nowrap px-6 py-4">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[16px] text-slate-400">mail</span>
+                  <span class="dark:text-white">Email</span>
+                </div>
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 dark:text-white">support@internal.io</td>
+              <td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-500 ring-1 ring-inset ring-emerald-500/20">
+                                            Sent
+                                        </span>
+              </td>
+              <td class="whitespace-nowrap px-6 py-4 text-slate-500 dark:text-slate-400">156ms</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="h-10"></div> <!-- Bottom Spacer -->
+    </div>
+  </main>
+</div>
+</body></html>
